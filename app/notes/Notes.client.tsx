@@ -51,7 +51,10 @@ export default function NotesClient() {
       {isLoading && <Loader />}
       {isError && <ErrorMessage message="Failed to load notes" />}
 
-      {data && data.notes.length > 0 && <NoteList notes={data.notes} />}
+      {data && data.notes.length > 0 && (
+        <NoteList notes={data.notes} query={debouncedSearch} page={page} />
+      )}
+
 
       {isModalOpen && (
         <Modal onClose={() => setModalOpen(false)}>
